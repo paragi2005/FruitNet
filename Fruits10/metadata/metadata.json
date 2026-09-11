@@ -1,0 +1,50 @@
+{
+    "num_classes": 12,
+    "classes": [
+        "apple_Bad",
+        "apple_Good",
+        "banana_Bad",
+        "banana_Good",
+        "guava_Bad",
+        "guava_Good",
+        "lime_Bad",
+        "lime_Good",
+        "orange_Bad",
+        "orange_Good",
+        "pomegranate_Bad",
+        "pomegranate_Good"
+    ],
+    "class_to_index": {
+        "apple_Bad": 0,
+        "apple_Good": 1,
+        "banana_Bad": 2,
+        "banana_Good": 3,
+        "guava_Bad": 4,
+        "guava_Good": 5,
+        "lime_Bad": 6,
+        "lime_Good": 7,
+        "orange_Bad": 8,
+        "orange_Good": 9,
+        "pomegranate_Bad": 10,
+        "pomegranate_Good": 11
+    },
+    "index_to_class": {
+        "0": "apple_Bad",
+        "1": "apple_Good",
+        "2": "banana_Bad",
+        "3": "banana_Good",
+        "4": "guava_Bad",
+        "5": "guava_Good",
+        "6": "lime_Bad",
+        "7": "lime_Good",
+        "8": "orange_Bad",
+        "9": "orange_Good",
+        "10": "pomegranate_Bad",
+        "11": "pomegranate_Good"
+    },
+    "image_size": [
+        160,
+        160
+    ],
+    "is_dummy": false
+}

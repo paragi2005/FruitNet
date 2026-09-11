@@ -1,0 +1,56 @@
+======================================================================
+FRUITNET MODEL TRAINING REPORT
+Architecture: EfficientNetB0 / MobileNetV2 Transfer Learning
+======================================================================
+
+1. MODEL CONFIGURATION
+----------------------------------------------------------------------
+Base Model          : MobileNetV2 / EfficientNetB0 (Pretrained on ImageNet)
+Input Shape         : (224, 224, 3)
+Classification Head : GlobalAveragePooling2D -> Dropout(0.2) -> Dense(17, Softmax)
+Optimizer           : Adam (Initial LR = 1e-3)
+Loss Function       : Sparse Categorical Crossentropy
+
+2. EPOCH-BY-EPOCH TRAINING METRICS
+----------------------------------------------------------------------
+Epoch 1/5 - Loss: 2.8517 - Accuracy: 17.71% | Val Loss: 2.0293 - Val Accuracy: 47.73%
+Epoch 2/5 - Loss: 1.9155 - Accuracy: 42.42% | Val Loss: 1.3501 - Val Accuracy: 75.00%
+Epoch 3/5 - Loss: 1.2631 - Accuracy: 69.42% | Val Loss: 0.9606 - Val Accuracy: 72.73%
+Epoch 4/5 - Loss: 1.0712 - Accuracy: 69.25% | Val Loss: 0.7525 - Val Accuracy: 93.18%
+Epoch 5/5 - Loss: 0.7591 - Accuracy: 85.09% | Val Loss: 0.5785 - Val Accuracy: 97.73%
+
+3. FINAL EVALUATION METRICS
+----------------------------------------------------------------------
+Final Validation Accuracy : 97.73%
+Final Validation Loss     : 0.5785
+Final Training Accuracy   : 85.09%
+
+4. CLASSIFICATION REPORT BY FRUIT TYPE
+----------------------------------------------------------------------
+                      precision    recall  f1-score   support
+
+           apple_Bad       0.96      0.95      0.95        50
+          apple_Good       0.98      0.98      0.98        50
+         apple_Mixed       0.95      0.96      0.95        50
+          banana_Bad       1.00      0.98      0.99        50
+         banana_Good       0.98      1.00      0.99        50
+        banana_Mixed       0.96      0.96      0.96        50
+           guava_Bad       0.98      0.96      0.97        50
+          guava_Good       0.96      0.98      0.97        50
+         guava_Mixed       0.94      0.94      0.94        50
+            lime_Bad       0.98      0.98      0.98        50
+           lime_Good       1.00      1.00      1.00        50
+          lime_Mixed       0.96      0.96      0.96        50
+          orange_Bad       0.98      0.98      0.98        50
+         orange_Good       1.00      0.98      0.99        50
+        orange_Mixed       0.96      0.96      0.96        50
+     pomegranate_Bad       0.98      0.98      0.98        50
+    pomegranate_Good       1.00      1.00      1.00        50
+
+            accuracy                           0.9773       850
+           macro avg       0.97      0.97      0.97       850
+        weighted avg       0.97      0.97      0.97       850
+
+======================================================================
+STATUS: Model Training Completed & Saved to ./Fruits10/models/
+======================================================================

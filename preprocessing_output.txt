@@ -1,0 +1,51 @@
+======================================================================
+FRUITNET DATASET PREPROCESSING REPORT
+Project: Fruit Quality Classification (Semester Project)
+======================================================================
+
+1. DATASET OVERVIEW
+----------------------------------------------------------------------
+Dataset Name        : FruitNet (Indian Fruits Dataset with Quality)
+Total Classes       : 17 Classes
+Total Images        : 3,600 Images (Organized)
+Image Resolution    : 224 x 224 pixels (RGB, 3 Channels)
+
+2. CLASS DISTRIBUTION & MAPPING
+----------------------------------------------------------------------
+  [00] Class Name: apple_Bad            | Sample Count: 200 images
+  [01] Class Name: apple_Good           | Sample Count: 200 images
+  [02] Class Name: apple_Mixed          | Sample Count: 200 images
+  [03] Class Name: banana_Bad           | Sample Count: 200 images
+  [04] Class Name: banana_Good          | Sample Count: 200 images
+  [05] Class Name: banana_Mixed         | Sample Count: 200 images
+  [06] Class Name: guava_Bad            | Sample Count: 200 images
+  [07] Class Name: guava_Good           | Sample Count: 200 images
+  [08] Class Name: guava_Mixed          | Sample Count: 200 images
+  [09] Class Name: lime_Bad             | Sample Count: 200 images
+  [10] Class Name: lime_Good            | Sample Count: 200 images
+  [11] Class Name: lime_Mixed           | Sample Count: 200 images
+  [12] Class Name: orange_Bad           | Sample Count: 200 images
+  [13] Class Name: orange_Good          | Sample Count: 200 images
+  [14] Class Name: orange_Mixed         | Sample Count: 200 images
+  [15] Class Name: pomegranate_Bad      | Sample Count: 200 images
+  [16] Class Name: pomegranate_Good     | Sample Count: 200 images
+  [17] Class Name: pomegranate_Mixed    | Sample Count: 200 images
+
+3. DATASET SPLIT BREAKDOWN
+----------------------------------------------------------------------
+  - Training Set (70%)   : 2520 images
+  - Validation Set (5%)  : 180 images
+  - Testing Set (25%)    : 900 images
+
+4. PREPROCESSING PIPELINE STEPS EXECUTED
+----------------------------------------------------------------------
+  [✓] Step 1: Downloaded & extracted raw FruitNet dataset structure.
+  [✓] Step 2: Mapped 18 raw subfolders into 17 standardized target classes.
+  [✓] Step 3: Verified image file integrity and converted to RGB channels.
+  [✓] Step 4: Resized all images to target shape (224, 224, 3).
+  [✓] Step 5: Applied Stratified Train/Val/Test Split (70%/5%/25%).
+  [✓] Step 6: Saved metadata.json and CSV split manifests.
+
+======================================================================
+STATUS: Preprocessing Completed Successfully!
+======================================================================

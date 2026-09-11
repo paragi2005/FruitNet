@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FruitNet — AI Fruit Quality Classifier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">FruitNet</h1>
+            <p class="app-tagline">AI-Powered Fruit Quality Assessment</p>
+        </header>
+
+        <main class="main-content">
+            <div class="glass-card">
+                <div id="upload-zone" class="upload-zone">
+                    <div class="upload-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                    </div>
+                    <p class="upload-text">Drop a fruit image here or <span class="upload-browse">click to browse</span></p>
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                </div>
+
+                <div id="preview-container" class="preview-container hidden">
+                    <img id="image-preview" class="image-preview" src="" alt="Fruit preview">
+                    <button id="analyze-btn" class="analyze-btn">
+                        <span class="btn-text">Analyze Fruit</span>
+                        <div class="spinner hidden"></div>
+                    </button>
+                </div>
+
+                <div id="error-message" class="error-message hidden"></div>
+
+                <div id="results-section" class="results-section hidden">
+                    <div class="top-prediction">
+                        <div class="prediction-emoji" id="prediction-emoji">🍎</div>
+                        <div class="prediction-details">
+                            <h2 class="prediction-title" id="prediction-title">Apple</h2>
+                            <div class="prediction-quality-row">
+                                <span class="quality-badge" id="quality-badge">Good</span>
+                                <span class="confidence-value" id="top-confidence-val">98%</span>
+                            </div>
+                            <div class="confidence-bar-container large">
+                                <div class="confidence-bar-fill" id="top-confidence-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="top5-heading">Other Possibilities</h3>
+                    <div id="top5-list" class="top5-list">
+                        <!-- Top 5 predictions will be injected here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>Built for FruitNet AI</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
