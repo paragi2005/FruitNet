@@ -19,5 +19,5 @@ COPY . .
 # Expose port
 EXPOSE 5000
 
-# Run with Gunicorn WSGI server
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "--timeout", "120", "app:app"]
+# Run with Gunicorn WSGI server (1 worker process for low RAM usage <512MB)
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "1", "--threads", "2", "--timeout", "120", "app:app"]
