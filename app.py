@@ -18,7 +18,7 @@ except ImportError:
     load_model = None
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 MODEL_PATH = './Fruits10/models/fruit_quality_efficientnetb0.keras'
 METADATA_PATH = './Fruits10/metadata/metadata.json'
@@ -66,7 +66,7 @@ def parse_class_name(class_name):
 def index():
     return send_from_directory(app.static_folder, 'index.html')
 
-@app.route('/api/health', methods=['GET'])
+@app.route('/api/health', methods=['GET'], strict_slashes=False)
 def health():
     return jsonify({
         "status": "ok",
@@ -74,10 +74,13 @@ def health():
         "classes": classes
     })
 
-@app.route('/api/predict', methods=['POST'])
+@app.route('/api/predict', methods=['POST', 'OPTIONS'], strict_slashes=False)
 def predict():
+    if request.method == 'OPTIONS':
+        return jsonify({"status": "ok"}), 200
+
     if model is None:
-        return jsonify({"success": False, "error": "Model is not loaded."}), 503
+        return jsonify({"success": False, "error": "Model is loading or not available."}), 503
 
     if 'image' not in request.files:
         return jsonify({"success": False, "error": "No image field in request."}), 400
