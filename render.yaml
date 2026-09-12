@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: FruitNet
+    env: docker
+    plan: free
+    region: oregon
+    branch: main
+    autoDeploy: true
