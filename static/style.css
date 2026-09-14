@@ -430,3 +430,95 @@ body {
         gap: 1rem;
     }
 }
+
+/* PWA Install Banner */
+.install-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(135deg, var(--accent-primary), #8e7dff);
+    padding: 0.75rem 1rem;
+    box-shadow: 0 4px 20px rgba(108, 92, 231, 0.4);
+    animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); opacity: 0; }
+    to   { transform: translateY(0);     opacity: 1; }
+}
+
+.install-banner-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.install-icon {
+    font-size: 1.5rem;
+}
+
+.install-text {
+    flex: 1;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.install-btn {
+    padding: 0.4rem 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.install-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.install-dismiss {
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    line-height: 1;
+}
+
+.install-dismiss:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Standalone mode (when installed as PWA app) */
+@media (display-mode: standalone) {
+    body {
+        padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    .app-container {
+        padding-top: 1rem;
+    }
+
+    .install-banner {
+        display: none !important;
+    }
+}
+

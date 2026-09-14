@@ -1,0 +1,29 @@
+{
+    "name": "FruitNet — AI Fruit Quality Classifier",
+    "short_name": "FruitNet",
+    "description": "AI-powered fruit quality assessment using deep learning. Upload or capture fruit images to classify quality and freshness in real-time.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0a0a1a",
+    "theme_color": "#6c5ce7",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["education", "utilities", "food"],
+    "icons": [
+        {
+            "src": "/static/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/static/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [],
+    "prefer_related_applications": false
+}

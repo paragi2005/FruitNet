@@ -98,6 +98,19 @@ def parse_class_name(class_name):
 def index():
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.route('/service-worker.js')
+def service_worker():
+    """Serve service worker from root scope (required for PWA)."""
+    return send_from_directory(app.static_folder, 'service-worker.js',
+                               mimetype='application/javascript')
+
+@app.route('/manifest.json')
+def manifest():
+    """Serve PWA manifest from root scope."""
+    return send_from_directory(app.static_folder, 'manifest.json',
+                               mimetype='application/json')
+
+
 @app.route('/api/health', methods=['GET'], strict_slashes=False)
 def health():
     return jsonify({
