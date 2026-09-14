@@ -6,9 +6,41 @@ os.environ['MKL_NUM_THREADS'] = '1'
 import json
 import numpy as np
 import io
+import threading
+import time
+import urllib.request
 from PIL import Image
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
+
+def start_self_ping():
+    """Background daemon thread to ping /api/health every 10 minutes to prevent Render idle timeout."""
+    def ping_worker():
+        time.sleep(20) # Wait for initial app startup
+        while True:
+            try:
+                app_url = os.environ.get('RENDER_EXTERNAL_URL') or os.environ.get('APP_URL')
+                if app_url:
+                    health_url = app_url.rstrip('/') + '/api/health'
+                else:
+                    health_url = 'http://127.0.0.1:5000/api/health'
+
+                req = urllib.request.Request(
+                    health_url,
+                    headers={'User-Agent': 'FruitNet-SelfPing/1.0'}
+                )
+                with urllib.request.urlopen(req, timeout=10) as resp:
+                    print(f"[Self-Ping] Keep-alive ping sent to {health_url} -> Status: {resp.status} OK")
+            except Exception as e:
+                print(f"[Self-Ping] Notice: {e}")
+
+            time.sleep(600) # Ping every 10 minutes (600 seconds)
+
+    ping_thread = threading.Thread(target=ping_worker, daemon=True)
+    ping_thread.start()
+
+start_self_ping()
+
 
 print("Loading TensorFlow and Keras... This may take a moment.")
 try:

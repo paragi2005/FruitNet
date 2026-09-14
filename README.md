@@ -84,3 +84,20 @@ Open your browser and navigate to:
 - **Drag & Drop Upload**: Upload any fruit image to classify quality and freshness.
 - **Real-Time Camera**: Take live photos directly using your webcam.
 - **Interactive Metrics**: Displays top prediction confidence score and class probabilities.
+
+---
+
+## ⚡ Keep-Alive & Self-Ping Mechanism (Prevent 14-Minute Idle Timeout)
+
+Free cloud hosting platforms (like **Render.com**) put web instances to sleep if no HTTP request is received for 15 minutes. To ensure the link remains active 24/7 without turning off after 14 minutes, **FruitNet** implements a dual self-ping system:
+
+1. **Server-Side Background Thread (`app.py`)**:
+   - A background daemon thread automatically sends an HTTP request to `/api/health` every **10 minutes** (600s).
+   - Automatically detects the deployed public URL via `RENDER_EXTERNAL_URL` or `APP_URL`.
+
+2. **Client-Side Web Heartbeat (`app.js`)**:
+   - Sends a lightweight `/api/health` heartbeat every **5 minutes** while the web page is open.
+
+3. **Optional External Monitor (UptimeRobot / Cron-Job)**:
+   - For 100% 24/7 zero-downtime uptime, you can paste your Render URL `https://your-app.onrender.com/api/health` into free services like [UptimeRobot.com](https://uptimerobot.com) or [cron-job.org](https://cron-job.org) set to ping every 10 minutes.
+

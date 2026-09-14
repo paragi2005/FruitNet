@@ -98,22 +98,21 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('image', currentFile);
 
         try {
-            // Mock API delay for effect if actual API fails or takes time
             const response = await fetch('/api/predict', {
                 method: 'POST',
                 body: formData
             });
 
-            if (!response.ok) {
-                throw new Error(`Server responded with ${response.status}`);
+            const data = await response.json();
+            if (!response.ok || (data && data.success === false)) {
+                const errMsg = (data && data.error) ? data.error : `Server status ${response.status}`;
+                throw new Error(errMsg);
             }
 
-            const data = await response.json();
             showResults(data);
         } catch (error) {
             console.error('API Error:', error);
-            // Fallback for visual testing if API is not yet available
-            showError('Failed to connect to the prediction API. Check console for details.');
+            showError(error.message || 'Prediction failed. Please try again.');
         } finally {
             // Remove loading state
             analyzeBtn.disabled = false;
@@ -234,4 +233,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function hideError() {
         errorMessage.classList.add('hidden');
     }
+
+    // Frontend Keep-Alive heartbeat (pings server every 5 minutes while webpage is open)
+    setInterval(() => {
+        fetch('/api/health')
+            .then(res => res.json())
+            .then(data => console.log('Keep-alive heartbeat status:', data.status))
+            .catch(err => console.warn('Keep-alive heartbeat warning:', err));
+    }, 300000);
 });
+
