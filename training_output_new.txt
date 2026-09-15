@@ -1,0 +1,85 @@
+======================================================================
+FRUITNET MODEL TRAINING REPORT
+Architecture: EfficientNetB0 / MobileNetV2 Transfer Learning
+======================================================================
+
+TensorFlow Version: 2.18.0
+GPU Available: False
+Running on: CPU (forced, no GPU)
+
+1. MODEL CONFIGURATION
+----------------------------------------------------------------------
+Using sample_dataset as image source: C:\Users\PARAGI\Downloads\frooit\Fruit\Fruits10\sample_dataset
+Base Model          : MobileNetV2 / EfficientNetB0 (Pretrained on ImageNet)
+Input Shape         : (160, 160, 3)
+Classification Head : GlobalAveragePooling2D -> Dropout(0.2) -> Dense(18, Softmax)
+Optimizer           : Adam (Initial LR = 1e-3)
+Loss Function       : Sparse Categorical Crossentropy
+Total Images        : 216
+Total Classes       : 18
+
+Train: 144, Val: 36, Test: 36
+
+Creating datasets...
+Building model...
+
+2. EPOCH-BY-EPOCH TRAINING METRICS
+----------------------------------------------------------------------
+Phase 1: Feature Extraction (5 epochs)...
+Epoch 1/5 - Loss: 2.3431 - Accuracy: 28.47% | Val Loss: 1.3929 - Val Accuracy: 55.56%
+Epoch 2/5 - Loss: 1.4268 - Accuracy: 48.61% | Val Loss: 0.7092 - Val Accuracy: 83.33%
+Epoch 3/5 - Loss: 0.8810 - Accuracy: 69.44% | Val Loss: 0.6389 - Val Accuracy: 77.78%
+Epoch 4/5 - Loss: 0.7840 - Accuracy: 68.06% | Val Loss: 0.5492 - Val Accuracy: 83.33%
+Epoch 5/5 - Loss: 0.6219 - Accuracy: 77.78% | Val Loss: 0.4485 - Val Accuracy: 77.78%
+
+Phase 2: Fine-Tuning...
+Epoch 1/5 (FT) - Loss: 0.5258 - Accuracy: 76.39% | Val Loss: 0.3746 - Val Accuracy: 83.33%
+Epoch 2/5 (FT) - Loss: 0.4142 - Accuracy: 84.72% | Val Loss: 0.3452 - Val Accuracy: 83.33%
+Epoch 3/5 (FT) - Loss: 0.3148 - Accuracy: 90.28% | Val Loss: 0.3229 - Val Accuracy: 83.33%
+Epoch 4/5 (FT) - Loss: 0.3106 - Accuracy: 88.19% | Val Loss: 0.3069 - Val Accuracy: 91.67%
+Epoch 5/5 (FT) - Loss: 0.3622 - Accuracy: 88.89% | Val Loss: 0.2847 - Val Accuracy: 94.44%
+
+Saving model to C:\Users\PARAGI\Downloads\frooit\Fruit\Fruits10\models\fruit_quality_efficientnetb0.keras...
+Final model saved to C:\Users\PARAGI\Downloads\frooit\Fruit\Fruits10\models\fruit_quality_efficientnetb0.keras
+
+3. FINAL EVALUATION METRICS
+----------------------------------------------------------------------
+Final Validation Accuracy : 94.44%
+Final Validation Loss     : 0.2847
+Final Training Accuracy   : 90.28%
+Test Loss                 : 0.3246
+Test Accuracy             : 94.44%
+
+4. CLASSIFICATION REPORT BY FRUIT TYPE
+----------------------------------------------------------------------
+                   precision    recall  f1-score   support
+
+        apple_Bad       1.00      0.50      0.67         2
+       apple_Good       1.00      1.00      1.00         2
+      apple_Mixed       1.00      1.00      1.00         2
+       banana_Bad       1.00      1.00      1.00         2
+      banana_Good       1.00      1.00      1.00         2
+     banana_Mixed       1.00      1.00      1.00         2
+        guava_Bad       0.67      1.00      0.80         2
+       guava_Good       1.00      1.00      1.00         2
+      guava_Mixed       1.00      0.50      0.67         2
+         lime_Bad       1.00      1.00      1.00         2
+        lime_Good       1.00      1.00      1.00         2
+       lime_Mixed       1.00      1.00      1.00         2
+       orange_Bad       1.00      1.00      1.00         2
+      orange_Good       1.00      1.00      1.00         2
+     orange_Mixed       1.00      1.00      1.00         2
+  pomegranate_Bad       0.67      1.00      0.80         2
+ pomegranate_Good       1.00      1.00      1.00         2
+pomegranate_Mixed       1.00      1.00      1.00         2
+
+         accuracy                           0.94        36
+        macro avg       0.96      0.94      0.94        36
+     weighted avg       0.96      0.94      0.94        36
+
+Confusion matrix saved to C:\Users\PARAGI\Downloads\frooit\Fruit\Fruits10\models\confusion_matrix.png
+Training history plot saved to C:\Users\PARAGI\Downloads\frooit\Fruit\Fruits10\models\training_history.png
+
+======================================================================
+STATUS: Model Training Completed & Saved to C:\Users\PARAGI\Downloads\frooit\Fruit\Fruits10\models
+======================================================================
