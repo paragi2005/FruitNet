@@ -178,6 +178,66 @@ body {
     font-weight: 600;
 }
 
+/* Gallery / Camera action buttons */
+.upload-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.25rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.upload-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.4rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.upload-action-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.upload-action-btn:active {
+    transform: scale(0.97);
+}
+
+.upload-action-btn.gallery-btn {
+    background: linear-gradient(135deg, rgba(0, 184, 148, 0.15), rgba(0, 184, 148, 0.05));
+    border-color: rgba(0, 184, 148, 0.3);
+    color: #55efc4;
+}
+
+.upload-action-btn.gallery-btn:hover {
+    background: linear-gradient(135deg, rgba(0, 184, 148, 0.25), rgba(0, 184, 148, 0.1));
+    border-color: rgba(0, 184, 148, 0.5);
+    box-shadow: 0 6px 20px rgba(0, 184, 148, 0.2);
+}
+
+.upload-action-btn.camera-btn {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(108, 92, 231, 0.05));
+    border-color: rgba(108, 92, 231, 0.3);
+    color: var(--accent-secondary);
+}
+
+.upload-action-btn.camera-btn:hover {
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.25), rgba(108, 92, 231, 0.1));
+    border-color: rgba(108, 92, 231, 0.5);
+    box-shadow: 0 6px 20px rgba(108, 92, 231, 0.2);
+}
+
 .hidden {
     display: none !important;
 }

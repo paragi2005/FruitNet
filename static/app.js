@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
     const uploadZone = document.getElementById('upload-zone');
-    const fileInput = document.getElementById('file-input');
+    const fileInput = document.getElementById('file-input');         // Gallery (no capture)
+    const cameraInput = document.getElementById('camera-input');     // Camera (capture="environment")
+    const galleryBtn = document.getElementById('gallery-btn');
+    const cameraBtn = document.getElementById('camera-btn');
     const previewContainer = document.getElementById('preview-container');
     const imagePreview = document.getElementById('image-preview');
     const analyzeBtn = document.getElementById('analyze-btn');
@@ -55,11 +58,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    uploadZone.addEventListener('click', () => {
+    // Gallery button — opens file picker / photo gallery (no capture attribute)
+    galleryBtn.addEventListener('click', (e) => {
+        e.stopPropagation();          // prevent the upload-zone click from also firing
         fileInput.click();
     });
 
+    // Camera button — opens device camera directly (capture="environment")
+    cameraBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cameraInput.click();
+    });
+
+    // Listen for file selection from gallery input
     fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            handleFile(e.target.files[0]);
+        }
+    });
+
+    // Listen for file selection from camera input
+    cameraInput.addEventListener('change', (e) => {
         if (e.target.files && e.target.files.length > 0) {
             handleFile(e.target.files[0]);
         }
