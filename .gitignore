@@ -3,3 +3,8 @@ __pycache__/
 .DS_Store
 .env
 .vscode/
+kaggle.json
+test_patch*.py
+replace_and_check_model.py
+run_training_local.py
+training_output_new.txt
